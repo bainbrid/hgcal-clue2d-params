@@ -1,0 +1,5 @@
+export PYTHONNOUSERSITE=true # Run this before installing CMSSW
+
+# Taken from:
+# https://cms-talk.web.cern.ch/t/cstddef-file-not-found-error-during-cmssw-build/45886
+# Fixes the following issue: "cstddef file not found error during cmssw build" (related to ~/.local file)

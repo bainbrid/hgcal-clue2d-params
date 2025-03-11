@@ -1,0 +1,20 @@
+
+# in: /afs/cern.ch/work/b/bainbrid/hgcal/split_clue2d_parameters/CMSSW_14_1_0_pre5/src going to execute cd 29696.203_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5
+ cmsDriver.py CE_E_Front_120um_cfi  -s GEN,SIM -n 1000 --conditions auto:phase2_realistic_T33 --beamspot HGCALCloseBy --datatier GEN-SIM --eventcontent FEVTDEBUG --geometry Extended2026D110 --era Phase2C17I13M9 --relval 9000,100 --no_exec --fileout file:step1.root  > step1_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/b/bainbrid/hgcal/split_clue2d_parameters/CMSSW_14_1_0_pre5/src going to execute cd 29696.203_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5
+ cmsDriver.py step2  -s DIGI:pdigi_valid,L1TrackTrigger,L1,L1P2GT,DIGI2RAW,HLT:@relval2026 --conditions auto:phase2_realistic_T33 --datatier GEN-SIM-DIGI-RAW -n 1000 --eventcontent FEVTDEBUGHLT --geometry Extended2026D110 --era Phase2C17I13M9 --no_exec --filein  file:step1.root  --fileout file:step2.root  > step2_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/b/bainbrid/hgcal/split_clue2d_parameters/CMSSW_14_1_0_pre5/src going to execute cd 29696.203_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5
+ cmsDriver.py step3  -s RAW2DIGI,RECO,RECOSIM,PAT,VALIDATION:@phase2Validation+@miniAODValidation,DQM:@phase2+@miniAODDQM --conditions auto:phase2_realistic_T33 --datatier GEN-SIM-RECO,MINIAODSIM,DQMIO -n 1000 --eventcontent FEVTDEBUGHLT,MINIAODSIM,DQM --geometry Extended2026D110 --era Phase2C17I13M9 --procModifiers ticl_v5 --no_exec --filein  file:step2.root  --fileout file:step3.root  > step3_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/b/bainbrid/hgcal/split_clue2d_parameters/CMSSW_14_1_0_pre5/src going to execute cd 29696.203_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5
+ cmsDriver.py step4  -s HARVESTING:@phase2Validation+@phase2+@miniAODValidation+@miniAODDQM --conditions auto:phase2_realistic_T33 --mc  --geometry Extended2026D110 --scenario pp --filetype DQM --era Phase2C17I13M9 --procModifiers ticl_v5 -n 1000  --no_exec --filein file:step3_inDQM.root --fileout file:step4.root  > step4_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5.log  2>&1
+ 
+
+# in: /afs/cern.ch/work/b/bainbrid/hgcal/split_clue2d_parameters/CMSSW_14_1_0_pre5/src going to execute cd 29696.203_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5
+ cmsDriver.py step5  -s ALCA:SiPixelCalSingleMuonLoose+SiPixelCalSingleMuonTight+TkAlMuonIsolated+TkAlMinBias+MuAlOverlaps+EcalESAlign+TkAlZMuMu+TkAlDiMuonAndVertex+HcalCalHBHEMuonProducerFilter+TkAlUpsilonMuMu+TkAlJpsiMuMu --conditions auto:phase2_realistic_T33 --datatier ALCARECO -n 1000 --eventcontent ALCARECO --geometry Extended2026D110 --era Phase2C17I13M9 --no_exec --filein file:step3.root --fileout file:step5.root  > step5_CloseByPGun_CE_E_Front_120um+2026D110_ticl_v5.log  2>&1
+ 
