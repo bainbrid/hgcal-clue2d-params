@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: step5 -s ALCA:SiPixelCalSingleMuonLoose+SiPixelCalSingleMuonTight+TkAlMuonIsolated+TkAlMinBias+MuAlOverlaps+EcalESAlign+TkAlZMuMu+TkAlDiMuonAndVertex+HcalCalHBHEMuonProducerFilter+TkAlUpsilonMuMu+TkAlJpsiMuMu --conditions auto:phase2_realistic_T33 --datatier ALCARECO -n 1000 --eventcontent ALCARECO --geometry Extended2026D110 --era Phase2C17I13M9 --no_exec --filein file:step3.root --fileout file:step5.root
+# with command line options: step5 -s ALCA:SiPixelCalSingleMuonLoose+SiPixelCalSingleMuonTight+TkAlMuonIsolated+TkAlMinBias+MuAlOverlaps+EcalESAlign+TkAlZMuMu+TkAlDiMuonAndVertex+HcalCalHBHEMuonProducerFilter+TkAlUpsilonMuMu+TkAlJpsiMuMu --conditions auto:phase2_realistic_T33 --datatier ALCARECO -n 1000 --eventcontent ALCARECO --geometry ExtendedRun4D110 --era Phase2C17I13M9 --no_exec --filein file:step3.root --fileout file:step5.root
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Phase2C17I13M9_cff import Phase2C17I13M9
@@ -15,7 +15,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.EventContent.EventContent_cff')
 process.load('SimGeneral.MixingModule.mixNoPU_cfi')
-process.load('Configuration.Geometry.GeometryExtended2026D110Reco_cff')
+process.load('Configuration.Geometry.GeometryExtendedRun4D110Reco_cff')
 process.load('Configuration.StandardSequences.MagneticField_cff')
 process.load('Configuration.StandardSequences.AlCaRecoStreamsMC_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
@@ -206,6 +206,18 @@ process.ALCARECOStreamTkAlDiMuonAndVertex = cms.OutputModule("PoolOutputModule",
         'keep *_TriggerResults_*_*',
         'keep DcsStatuss_scalersRawToDigi_*_*',
         'keep *_offlinePrimaryVertices_*_*',
+        'keep *_offlineBeamSpot_*_*',
+        'keep LHERunInfoProduct_*_*_*',
+        'keep LHEEventProduct_*_*_*',
+        'keep GenRunInfoProduct_generator_*_*',
+        'keep GenLumiInfoHeader_generator_*_*',
+        'keep GenLumiInfoProduct_generator_*_*',
+        'keep GenEventInfoProduct_generator_*_*',
+        'keep GenFilterInfo_*_*_*',
+        'keep *_TkAlDiMuonAndVertexGenMuonSelector_*_*',
+        'keep PileupSummaryInfos_*_*_*',
+        'keep int_*_bunchSpacing_*',
+        'keep *_genPUProtons_*_*',
         'keep Phase2TrackerCluster1DedmNewDetSetVector_ALCARECOTkAlDiMuon_*_*',
         'keep Phase2TrackerCluster1DedmNewDetSetVector_ALCARECOTkAlDiMuonVertexTracks_*_*'
     )
@@ -230,6 +242,17 @@ process.ALCARECOStreamTkAlJpsiMuMu = cms.OutputModule("PoolOutputModule",
         'keep L1GlobalTriggerReadoutRecord_gtDigis_*_*',
         'keep *_TriggerResults_*_*',
         'keep *_offlinePrimaryVertices_*_*',
+        'keep LHERunInfoProduct_*_*_*',
+        'keep LHEEventProduct_*_*_*',
+        'keep GenRunInfoProduct_generator_*_*',
+        'keep GenLumiInfoHeader_generator_*_*',
+        'keep GenLumiInfoProduct_generator_*_*',
+        'keep GenEventInfoProduct_generator_*_*',
+        'keep GenFilterInfo_*_*_*',
+        'keep *_TkAlJpsiMuMuGenMuonSelector_*_*',
+        'keep PileupSummaryInfos_*_*_*',
+        'keep int_*_bunchSpacing_*',
+        'keep *_genPUProtons_*_*',
         'keep DCSRecord_onlineMetaDataDigis_*_*',
         'keep Phase2TrackerCluster1DedmNewDetSetVector_ALCARECOTkAlJpsiMuMu_*_*'
     )
@@ -304,6 +327,17 @@ process.ALCARECOStreamTkAlUpsilonMuMu = cms.OutputModule("PoolOutputModule",
         'keep L1GlobalTriggerReadoutRecord_gtDigis_*_*',
         'keep *_TriggerResults_*_*',
         'keep *_offlinePrimaryVertices_*_*',
+        'keep LHERunInfoProduct_*_*_*',
+        'keep LHEEventProduct_*_*_*',
+        'keep GenRunInfoProduct_generator_*_*',
+        'keep GenLumiInfoHeader_generator_*_*',
+        'keep GenLumiInfoProduct_generator_*_*',
+        'keep GenEventInfoProduct_generator_*_*',
+        'keep GenFilterInfo_*_*_*',
+        'keep *_TkAlUpsilonMuMuGenMuonSelector_*_*',
+        'keep PileupSummaryInfos_*_*_*',
+        'keep int_*_bunchSpacing_*',
+        'keep *_genPUProtons_*_*',
         'keep DCSRecord_onlineMetaDataDigis_*_*',
         'keep Phase2TrackerCluster1DedmNewDetSetVector_ALCARECOTkAlUpsilonMuMu_*_*'
     )
@@ -328,6 +362,18 @@ process.ALCARECOStreamTkAlZMuMu = cms.OutputModule("PoolOutputModule",
         'keep L1GlobalTriggerReadoutRecord_gtDigis_*_*',
         'keep *_TriggerResults_*_*',
         'keep *_offlinePrimaryVertices_*_*',
+        'keep *_offlineBeamSpot_*_*',
+        'keep LHERunInfoProduct_*_*_*',
+        'keep LHEEventProduct_*_*_*',
+        'keep GenRunInfoProduct_generator_*_*',
+        'keep GenLumiInfoHeader_generator_*_*',
+        'keep GenLumiInfoProduct_generator_*_*',
+        'keep GenEventInfoProduct_generator_*_*',
+        'keep GenFilterInfo_*_*_*',
+        'keep *_TkAlZMuMuGenMuonSelector_*_*',
+        'keep PileupSummaryInfos_*_*_*',
+        'keep int_*_bunchSpacing_*',
+        'keep *_genPUProtons_*_*',
         'keep DCSRecord_onlineMetaDataDigis_*_*',
         'keep Phase2TrackerCluster1DedmNewDetSetVector_ALCARECOTkAlZMuMu_*_*'
     )
