@@ -293,3 +293,6 @@ process = customiseEarlyDelete(process)
 
 from RecoHGCal.TICL.customiseTICLFromReco import customiseTICLForDumper
 process = customiseTICLForDumper(process)
+
+from customiseLayerClusters_cff import customiseLayerClusters
+process = customiseLayerClusters(process,density="low",option=2,verbose=True)
